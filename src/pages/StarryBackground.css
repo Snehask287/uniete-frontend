@@ -1,0 +1,35 @@
+/* Starry Background */
+.starry-background {
+  background: #0d0f1c; /* Deep space color */
+  animation: bg-pan 30s infinite alternate linear;
+}
+
+/* Base Stars */
+.starry-background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><defs><filter id="f1" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceGraphic" stdDeviation="0.8" result="blur"></feGaussianBlur><feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 10 0" result="colormatrix"></feColorMatrix><feOffset in="colormatrix" dx="0.5" dy="0.5" result="offset"></feOffset><feMerge><feMergeNode in="offset"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge></filter></defs><rect width="100%" height="100%" fill="none"></rect><g filter="url(%23f1)"><circle cx="10%" cy="20%" r="1.5" fill="white"></circle><circle cx="25%" cy="80%" r="1" fill="white"></circle><circle cx="40%" cy="35%" r="1.2" fill="white"></circle><circle cx="60%" cy="60%" r="1.8" fill="white"></circle><circle cx="85%" cy="45%" r="0.9" fill="white"></circle><circle cx="95%" cy="95%" r="1.3" fill="white"></circle><circle cx="5%" cy="50%" r="1.1" fill="white"></circle><circle cx="50%" cy="10%" r="1.6" fill="white"></circle><circle cx="75%" cy="90%" r="1.4" fill="white"></circle><circle cx="90%" cy="25%" r="1" fill="white"></circle></g></svg>'),
+              radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+  background-size: 150% 150%;
+  animation: starry-shimmer 20s infinite linear;
+}
+
+/* Animation for the star field */
+@keyframes starry-shimmer {
+  from {
+    transform: rotate(0deg) scale(1);
+  }
+  to {
+    transform: rotate(360deg) scale(3);
+  }
+}
+
+/* Fading background pan (optional, adds subtle movement) */
+@keyframes bg-pan {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
